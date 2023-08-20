@@ -1,0 +1,44 @@
+-- Setup mason so it can manage external tooling
+-- require('mason').setup()
+
+-- Enable the following language servers
+-- Feel free to add/remove any LSPs that you want here. They will automatically be installed
+-- local servers = { 'clangd', 'rust_analyzer', 'pyright', 'tsserver', 'gopls', 'lua_ls' }
+--
+-- -- Enable the following language servers
+-- -- Feel free to add/remove any LSPs that you want here. They will automatically be installed
+-- local servers = {
+--   clangd = {},
+--   rust_analyzer = {},
+--   pyright = {},
+--   tsserver = {},
+--   lua_ls = {},
+--   gopls = {},
+-- }
+--
+--
+-- -- Ensure the servers above are installed
+-- local mason_lspconfig = require 'mason-lspconfig'
+--
+-- mason_lspconfig.setup {
+--   ensure_installed = vim.tbl_keys(servers),
+-- }
+--
+-- mason_lspconfig.setup_handlers {
+--   function(server_name)
+--     local conf = lspconfig[server_name]
+--     local opts = {
+--       capabilities = capabilities,
+--       on_attach = on_attach,
+--       settings = servers[server_name],
+--       filetypes = (servers[server_name] or {}).filetypes,
+--     }
+--     conf.setup(opts)
+--     local try_add = conf.manager.try_add
+--     conf.manager.try_add = function(bufnr)
+--       if not vim.b.large_buf then
+--         return try_add(bufnr)
+--       end
+--     end
+--   end
+-- }
