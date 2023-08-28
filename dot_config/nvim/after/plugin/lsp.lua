@@ -68,6 +68,10 @@ local servers = {
   tsserver = {},
   lua_ls = {},
   gopls = {},
+  terraformls = {
+    filetypes = { "terraform", "tf" },
+    cmd = { "terraform-ls", "serve" },
+  },
 }
 
 -- Setup neovim lua configuration

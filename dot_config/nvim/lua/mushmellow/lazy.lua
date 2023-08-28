@@ -122,23 +122,49 @@ require('lazy').setup({
     'lewis6991/gitsigns.nvim',
     opts = {
       -- See `:help gitsigns.txt`
-      signs      = {
+      signs                        = {
         add = { text = '+' },
         change = { text = '~' },
         delete = { text = '_' },
         topdelete = { text = '‾' },
         changedelete = { text = '~' },
       },
-      signcolumn = false, -- Toggle with `:Gitsigns toggle_signs`
-      numhl      = false, -- Toggle with `:Gitsigns toggle_numhl`
-      linehl     = false, -- Toggle with `:Gitsigns toggle_linehl`
-      word_diff  = false,
-      on_attach  = function(bufnr)
+      watch_gitdir                 = {
+        follow_files = true
+      },
+      signcolumn                   = true,  -- Toggle with `:Gitsigns toggle_signs`
+      numhl                        = false, -- Toggle with `:Gitsigns toggle_numhl`
+      linehl                       = false, -- Toggle with `:Gitsigns toggle_linehl`
+      word_diff                    = false,
+      on_attach                    = function(bufnr)
         vim.keymap.set('n', '<leader>gp', require('gitsigns').prev_hunk,
           { buffer = bufnr, desc = '[G]o to [P]revious Hunk' })
         vim.keymap.set('n', '<leader>gn', require('gitsigns').next_hunk, { buffer = bufnr, desc = '[G]o to [N]ext Hunk' })
         vim.keymap.set('n', '<leader>ph', require('gitsigns').preview_hunk, { buffer = bufnr, desc = '[P]review [H]unk' })
       end,
+      current_line_blame           = false, -- Toggle with `:Gitsigns toggle_current_line_blame`
+      current_line_blame_opts      = {
+        virt_text = true,
+        virt_text_pos = 'eol', -- 'eol' | 'overlay' | 'right_align'
+        delay = 1000,
+        ignore_whitespace = false,
+      },
+      current_line_blame_formatter = '<author>, <author_time:%Y-%m-%d> - <summary>',
+      sign_priority                = 6,
+      update_debounce              = 100,
+      status_formatter             = nil,   -- Use default
+      max_file_length              = 40000, -- Disable if file is longer than this (in lines)
+      preview_config               = {
+        -- Options passed to nvim_open_win
+        border = 'single',
+        style = 'minimal',
+        relative = 'cursor',
+        row = 0,
+        col = 1
+      },
+      yadm                         = {
+        enable = false
+      },
     },
   },
   -- { -- Theme inspired by Atom
@@ -269,11 +295,16 @@ require('lazy').setup({
   {
     "sourcegraph/sg.nvim",
     dependencies = { "nvim-lua/plenary.nvim" },
+    build = "nvim -l build/init.lua",
   },
 
   {
     'ThePrimeagen/harpoon',
     dependencies = { "nvim-lua/plenary.nvim" },
+  },
+
+  {
+    'mbbill/undotree',
   },
   --     -- Simple plugins can be specified as strings
   --     use("TimUntersberger/neogit")

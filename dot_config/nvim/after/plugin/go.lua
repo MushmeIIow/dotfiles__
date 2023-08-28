@@ -58,7 +58,7 @@ require('go').setup({
 	-- lsp_keymaps = false,
 	lsp_on_attach = on_attach,
 	--
-	luasnip = false,
+	luasnip = true,
 })
 
 vim.cmd("autocmd FileType go nmap <Leader><Leader>l :GoLint<CR>")
