@@ -90,7 +90,7 @@ require('lualine').setup {
     },
   },
   inactive_sections = {
-    lualine_a = {{ 'filename'}},
+    lualine_a = { { 'filename' } },
     lualine_b = {},
     lualine_c = {},
     lualine_x = {},
@@ -101,7 +101,7 @@ require('lualine').setup {
 
 -- Enable `lukas-reineke/indent-blankline.nvim`
 -- See `:help indent_blankline.txt`
-require('indent_blankline').setup {
-  char = '┊',
-  show_trailing_blankline_indent = false,
-}
+-- require('ibl').setup {
+--   char = '┊',
+--   show_trailing_blankline_indent = false,
+-- }
